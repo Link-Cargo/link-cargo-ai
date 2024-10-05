@@ -37,8 +37,10 @@ X_scfi_train, X_scfi_test, y_scfi_train, y_scfi_test = train_test_split(X_scfi, 
 model_scfi = RandomForestRegressor(n_estimators=100, random_state=42)
 model_scfi.fit(X_scfi_train, y_scfi_train)
 
-# y_scfi_pred = model_scfi.predict(np.array([[2024, 9, 20, 2510.95, 2726.58, 2963.38, 3097.63, 3281.36]]))  # SCFI 모델로 예측
+y_scfi_pred = model_scfi.predict(np.array([[2024, 9, 20, 2510.95, 2726.58, 2963.38, 3097.63, 3281.36]]))  # SCFI 모델로 예측
 # print(y_scfi_pred)
+
+# print(sum(abs(y_scfi_train - y_scfi_pred)) / len(X_scfi_train))
 
 with open("model_scfi.pkl", "wb") as f :
     pickle.dump(model_scfi, f)
